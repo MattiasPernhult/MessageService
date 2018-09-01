@@ -52,7 +52,7 @@ public class ApiException extends Exception {
     public static ApiException Unknown = new ApiException(1000, "Unknown");
 
     public static ApiException Unauthorized = new ApiException(2000, "Unauthorized");
-    public static ApiException InvalidToken = new ApiException(2001, "Invalid token");
+    public static ApiException InvalidToken = new ApiException(2001, "Invalid Token");
 
     public static ApiException BadRequest = new ApiException(3000, "Bad Request");
     public static ApiException ParameterMissing = new ApiException(3001, "Parameter Missing");

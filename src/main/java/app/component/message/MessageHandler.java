@@ -90,7 +90,7 @@ public class MessageHandler {
             MessageService messageService = this.messageServiceFactory.create();
             messageService.delete(userId, messageId);
 
-            response.status(200);
+            response.status(204);
             return "";
 
         } catch (ApiException apiException) {

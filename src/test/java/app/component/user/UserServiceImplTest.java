@@ -47,7 +47,7 @@ class UserServiceImplTest {
             ApiException e = assertThrows(ApiException.class, () -> {
                 userService.create(newUser);
             });
-            assertEquals(e.getMessage(), ApiException.UserAlreadyExists.getMessage());
+            assertEquals(ApiException.UserAlreadyExists.getMessage(), e.getMessage());
         } catch (Exception e) {
             fail(e.getMessage());
         }
@@ -65,7 +65,7 @@ class UserServiceImplTest {
             ApiException e = assertThrows(ApiException.class, () -> {
                 userService.create(newUser);
             });
-            assertEquals(e.getMessage(), ApiException.ServerError.getMessage());
+            assertEquals(ApiException.ServerError.getMessage(), e.getMessage());
         } catch (Exception e) {
             fail(e.getMessage());
         }

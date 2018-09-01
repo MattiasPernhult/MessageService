@@ -38,9 +38,13 @@ public class AuthMiddleware {
             }
 
             String jwtToken = parts[1];
+            String userId = request.params("user_id");
+            if (userId == null) {
+                throw ApiException.ParameterMissing.setDetail("user_id");
+            }
 
             TokenService tokenService = this.tokenServiceFactory.create();
-            Token token = tokenService.verify(jwtToken);
+            Token token = tokenService.verify(jwtToken, userId);
 
             request.session().attribute(Constant.USER_REQ_ATTRIBUTE, token.getUser());
         } catch (ApiException apiException) {

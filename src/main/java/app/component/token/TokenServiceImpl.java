@@ -34,14 +34,18 @@ public class TokenServiceImpl implements TokenService {
     }
 
     @Override
-    public Token verify(String jwtToken) throws ApiException {
+    public Token verify(String jwtToken, String userId) throws ApiException {
         Token token = this.tokenRepository.findTokenByJwtToken(jwtToken);
         if (token == null) {
             throw ApiException.TokenNotFound;
         }
 
+        if (!token.getUser().getId().equals(userId)) {
+            throw ApiException.InvalidToken;
+        }
+
         ClaimData claimData = this.jwt.verifyToken(jwtToken);
-        if (!token.getUser().getId().equals(claimData.getUserId())) {
+        if (!claimData.getUserId().equals(userId)) {
             throw ApiException.InvalidToken;
         }
 

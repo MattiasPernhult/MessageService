@@ -53,7 +53,7 @@ class TokenServiceImplTest {
             ApiException e = assertThrows(ApiException.class, () -> {
                 tokenService.create(token);
             });
-            assertEquals(e.getMessage(), UserNotFound.getMessage());
+            assertEquals(UserNotFound.getMessage(), e.getMessage());
         } catch (Exception ignored) {
         }
     }
@@ -75,7 +75,7 @@ class TokenServiceImplTest {
             ApiException e = assertThrows(ApiException.class, () -> {
                 tokenService.create(token);
             });
-            assertEquals(e.getMessage(), ServerError.getMessage());
+            assertEquals(ServerError.getMessage(), e.getMessage());
         } catch (Exception e) {
             fail(e.getMessage());
         }
@@ -97,7 +97,7 @@ class TokenServiceImplTest {
             ApiException e = assertThrows(ApiException.class, () -> {
                 tokenServiceImpl.create(token);
             });
-            assertEquals(e.getMessage(), ServerError.getMessage());
+            assertEquals(ServerError.getMessage(), e.getMessage());
         } catch (Exception e) {
             fail(e.getMessage());
         }
@@ -116,7 +116,7 @@ class TokenServiceImplTest {
                     jwt
             ).create();
 
-            Token verifiedToken = tokenService.verify(token.getJwtToken());
+            Token verifiedToken = tokenService.verify(token.getJwtToken(), token.getUser().getId());
             assertEquals(token, verifiedToken);
         } catch (Exception e) {
             fail(e.getMessage());
@@ -136,9 +136,9 @@ class TokenServiceImplTest {
             ).create();
 
             ApiException e = assertThrows(ApiException.class, () -> {
-                tokenService.verify("invalid-jwt-token-string");
+                tokenService.verify("invalid-jwt-token-string", "invalid-user-id");
             });
-            assertEquals(e.getMessage(), TokenNotFound.getMessage());
+            assertEquals(TokenNotFound.getMessage(), e.getMessage());
         } catch (Exception e) {
             fail(e.getMessage());
         }
@@ -161,9 +161,9 @@ class TokenServiceImplTest {
             ).create();
 
             ApiException e = assertThrows(ApiException.class, () -> {
-                tokenService.verify(token.getJwtToken());
+                tokenService.verify(token.getJwtToken(), token.getUser().getId());
             });
-            assertEquals(e.getMessage(), InvalidToken.getMessage());
+            assertEquals(InvalidToken.getMessage(), e.getMessage());
         } catch (Exception e) {
             fail(e.getMessage());
         }
@@ -186,9 +186,9 @@ class TokenServiceImplTest {
             );
 
             ApiException e = assertThrows(ApiException.class, () -> {
-                tokenService.verify(token.getJwtToken());
+                tokenService.verify(token.getJwtToken(), token.getUser().getId());
             });
-            assertEquals(e.getMessage(), UserNotFound.getMessage());
+            assertEquals(UserNotFound.getMessage(), e.getMessage());
         } catch (Exception e) {
             fail(e.getMessage());
         }

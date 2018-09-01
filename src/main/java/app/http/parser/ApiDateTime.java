@@ -16,21 +16,21 @@ class ApiDateTime {
     @SerializedName("offset")
     private Integer offset;
 
-    void validate() throws ApiException {
+    void validate(String name) throws ApiException {
         if (this.timestamp == null) {
-            throw ApiException.ParameterMissing.setDetail("created_at.timestamp");
+            throw ApiException.ParameterMissing.setDetail(String.format("%s.timestamp", name));
         }
 
         if (!this.isTimestampValid()) {
-            throw ApiException.ParameterInvalid.setDetail("created_at.timestamp");
+            throw ApiException.ParameterInvalid.setDetail(String.format("%s.timestamp", name));
         }
 
         if (this.offset == null) {
-            throw ApiException.ParameterMissing.setDetail("created_at.offset");
+            throw ApiException.ParameterMissing.setDetail(String.format("%s.offset", name));
         }
 
         if (!this.isOffsetValid()) {
-            throw ApiException.ParameterInvalid.setDetail("created_at.offset");
+            throw ApiException.ParameterInvalid.setDetail(String.format("%s.offset", name));
         }
     }
 

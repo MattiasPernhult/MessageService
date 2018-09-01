@@ -62,7 +62,7 @@ class MessageServiceImplTest {
             ApiException e = assertThrows(ApiException.class, () -> {
                 messageService.create(message);
             });
-            assertEquals(e.getMessage(), ApiException.ServerError.getMessage());
+            assertEquals(ApiException.ServerError.getMessage(), e.getMessage());
         } catch (Exception e) {
             fail(e.getMessage());
         }
@@ -105,7 +105,7 @@ class MessageServiceImplTest {
             );
 
             ApiException e = assertThrows(ApiException.class, messageService::getAll);
-            assertEquals(e.getMessage(), ApiException.ServerError.getMessage());
+            assertEquals(ApiException.ServerError.getMessage(), e.getMessage());
         } catch (Exception e) {
             fail(e.getMessage());
         }
@@ -170,7 +170,7 @@ class MessageServiceImplTest {
             ApiException e = assertThrows(ApiException.class, () -> {
                 messageService.update(newMessage);
             });
-            assertEquals(e.getMessage(), ApiException.MessageNotFound.getMessage());
+            assertEquals(ApiException.MessageNotFound.getMessage(), e.getMessage());
 
         } catch (Exception e) {
             fail(e.getMessage());
@@ -202,7 +202,7 @@ class MessageServiceImplTest {
             ApiException e = assertThrows(ApiException.class, () -> {
                 messageService.update(newMessage);
             });
-            assertEquals(e.getMessage(), ApiException.UserNotAllowedToModifyMessage.getMessage());
+            assertEquals(ApiException.UserNotAllowedToModifyMessage.getMessage(), e.getMessage());
 
         } catch (Exception e) {
             fail(e.getMessage());
@@ -222,7 +222,7 @@ class MessageServiceImplTest {
             ApiException e = assertThrows(ApiException.class, () -> {
                 messageService.update(message);
             });
-            assertEquals(e.getMessage(), ApiException.ServerError.getMessage());
+            assertEquals(ApiException.ServerError.getMessage(), e.getMessage());
 
         } catch (Exception e) {
             fail(e.getMessage());
@@ -272,7 +272,7 @@ class MessageServiceImplTest {
             ApiException e = assertThrows(ApiException.class, () -> {
                 messageService.delete(message.getUser().getId(), UUID.randomUUID().toString());
             });
-            assertEquals(e.getMessage(), ApiException.MessageNotFound.getMessage());
+            assertEquals(ApiException.MessageNotFound.getMessage(), e.getMessage());
 
         } catch (Exception e) {
             fail(e.getMessage());
@@ -297,7 +297,7 @@ class MessageServiceImplTest {
             ApiException e = assertThrows(ApiException.class, () -> {
                 messageService.delete(message1.getUser().getId(), message2.getId());
             });
-            assertEquals(e.getMessage(), ApiException.UserNotAllowedToModifyMessage.getMessage());
+            assertEquals(ApiException.UserNotAllowedToModifyMessage.getMessage(), e.getMessage());
 
         } catch (Exception e) {
             fail(e.getMessage());
@@ -317,7 +317,7 @@ class MessageServiceImplTest {
             ApiException e = assertThrows(ApiException.class, () -> {
                 messageService.delete(message.getUser().getId(), message.getId());
             });
-            assertEquals(e.getMessage(), ApiException.ServerError.getMessage());
+            assertEquals(ApiException.ServerError.getMessage(), e.getMessage());
 
         } catch (Exception e) {
             fail(e.getMessage());

@@ -55,7 +55,7 @@ class MessageRequest {
         if (this.createdAt == null) {
             throw ApiException.ParameterMissing.setDetail("created_at");
         }
-        this.createdAt.validate();
+        this.createdAt.validate("created_at");
     }
 
     private Message convert() {
