@@ -1,0 +1,6 @@
+.idea
+.env
+MessageService.iml
+
+target/*
+!target/.gitkeep
