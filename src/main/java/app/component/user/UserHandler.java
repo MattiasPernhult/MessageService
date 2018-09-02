@@ -31,7 +31,7 @@ public class UserHandler {
             UserService userService = this.userServiceFactory.create();
             userService.create(user);
 
-            response.status(200);
+            response.status(201);
             return this.jsonTransformer.transformUser(user);
 
         } catch (JsonSyntaxException e) {

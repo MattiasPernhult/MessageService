@@ -17,7 +17,7 @@ class TokenHelper {
         ExtractableResponse<Response> response = performCreateTokenRequest(userId).
                 then().
                 assertThat().
-                statusCode(200).
+                statusCode(201).
                 contentType(ContentType.JSON).
                 and().
                 body("token", Matchers.notNullValue())

@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MessageHelper {
 
@@ -51,7 +50,7 @@ class MessageHelper {
         return performCreateMessageRequest(body, userId, token).
                 then().
                 assertThat().
-                statusCode(200).
+                statusCode(201).
                 contentType(ContentType.JSON).
                 body("text", Matchers.equalTo("Example text")).
                 body("created_at.timestamp", Matchers.equalTo(1535798728)).

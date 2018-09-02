@@ -31,7 +31,7 @@ public class TokenHandler {
             TokenService tokenService = this.tokenServiceFactory.create();
             tokenService.create(token);
 
-            response.status(200);
+            response.status(201);
             return this.jsonTransformer.transformToken(token);
 
         } catch (JsonSyntaxException e) {

@@ -1,6 +1,5 @@
 package apitest;
 
-import app.component.message.Message;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;

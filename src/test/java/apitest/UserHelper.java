@@ -20,7 +20,8 @@ class UserHelper {
         ExtractableResponse<Response> response = performCreateUserRequest(body).
                 then().
                 assertThat().
-                statusCode(200).contentType(ContentType.JSON).
+                statusCode(201).
+                contentType(ContentType.JSON).
                 and().
                 body("name", Matchers.equalTo(name)).
                 body("id", Matchers.notNullValue())

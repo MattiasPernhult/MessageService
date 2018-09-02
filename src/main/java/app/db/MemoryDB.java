@@ -28,6 +28,9 @@ public class MemoryDB implements
         this.messages = new ConcurrentHashMap<>();
     }
 
+    //
+    // MessageRepository methods
+    //
     @Override
     public List<Message> getAllMessages() throws ApiException {
         List<Message> messages = new ArrayList<>(this.messages.values());
@@ -55,6 +58,9 @@ public class MemoryDB implements
         return this.messages.get(messageId);
     }
 
+    //
+    // UserRepository methods
+    //
     @Override
     public void createUser(User user) throws ApiException {
         this.users.put(user.getId(), user);
@@ -77,6 +83,9 @@ public class MemoryDB implements
         return this.users.get(id);
     }
 
+    //
+    // TokenRepository methods
+    //
     @Override
     public void createToken(Token token) throws ApiException {
         this.tokens.put(token.getJwtToken(), token);

@@ -35,7 +35,7 @@ public class MessageHandler {
             MessageService messageService = this.messageServiceFactory.create();
             messageService.create(message);
 
-            response.status(200);
+            response.status(201);
             return this.jsonTransformer.transformMessage(message);
 
         } catch (JsonSyntaxException e) {
