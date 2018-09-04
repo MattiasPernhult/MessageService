@@ -4,7 +4,6 @@ import app.component.user.MockUserRepository;
 import app.component.user.User;
 import app.db.MemoryDB;
 import app.db.MemoryDBTestUtil;
-import app.db.Type;
 import app.http.exception.ApiException;
 import app.service.jwt.Jwt;
 import app.service.jwt.JwtHS256;
@@ -22,8 +21,7 @@ class TokenServiceImplTest {
             MemoryDB memoryDB = new MemoryDB();
             User user = MemoryDBTestUtil.createUser(memoryDB);
 
-            TokenService tokenService = new TokenServiceFactory(
-                    Type.MEMORY,
+            TokenService tokenService = new TokenServiceMemoryDBFactory(
                     memoryDB,
                     new JwtHS256("test", "secret")
             ).create();
@@ -41,8 +39,7 @@ class TokenServiceImplTest {
     @Test
     void testCreate_UserNotFound() {
         try {
-            TokenService tokenService = new TokenServiceFactory(
-                    Type.MEMORY,
+            TokenService tokenService = new TokenServiceMemoryDBFactory(
                     new MemoryDB(),
                     new JwtHS256("test", "secret")
             ).create();
@@ -64,8 +61,7 @@ class TokenServiceImplTest {
             MemoryDB memoryDB = new MemoryDB();
             User user = MemoryDBTestUtil.createUser(memoryDB);
 
-            TokenService tokenService = new TokenServiceFactory(
-                    Type.MEMORY,
+            TokenService tokenService = new TokenServiceMemoryDBFactory(
                     memoryDB,
                     new MockJwt(true, false)
             ).create();
@@ -110,8 +106,7 @@ class TokenServiceImplTest {
             Jwt jwt = new JwtHS256("test", "secret");
             Token token = MemoryDBTestUtil.createToken(memoryDB, jwt);
 
-            TokenService tokenService = new TokenServiceFactory(
-                    Type.MEMORY,
+            TokenService tokenService = new TokenServiceMemoryDBFactory(
                     memoryDB,
                     jwt
             ).create();
@@ -129,8 +124,7 @@ class TokenServiceImplTest {
             MemoryDB memoryDB = new MemoryDB();
             Jwt jwt = new JwtHS256("test", "secret");
 
-            TokenService tokenService = new TokenServiceFactory(
-                    Type.MEMORY,
+            TokenService tokenService = new TokenServiceMemoryDBFactory(
                     memoryDB,
                     jwt
             ).create();
@@ -154,8 +148,7 @@ class TokenServiceImplTest {
                     new MockJwt(false, true)
             );
 
-            TokenService tokenService = new TokenServiceFactory(
-                    Type.MEMORY,
+            TokenService tokenService = new TokenServiceMemoryDBFactory(
                     memoryDB,
                     new JwtHS256("test", "secret")
             ).create();

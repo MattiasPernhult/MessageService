@@ -3,7 +3,6 @@ package app.component.message;
 import app.component.user.User;
 import app.db.MemoryDB;
 import app.db.MemoryDBTestUtil;
-import app.db.Type;
 import app.http.exception.ApiException;
 import org.joda.time.DateTime;
 import org.junit.jupiter.api.Test;
@@ -21,8 +20,7 @@ class MessageServiceImplTest {
             MemoryDB memoryDB = new MemoryDB();
             User user = MemoryDBTestUtil.createUser(memoryDB);
 
-            MessageService messageService = new MessageServiceFactory(
-                    Type.MEMORY,
+            MessageService messageService = new MessageServiceMemoryDBFactory(
                     memoryDB
             ).create();
 
@@ -76,8 +74,7 @@ class MessageServiceImplTest {
             Message message2 = MemoryDBTestUtil.createMessage(memoryDB);
             Message message3 = MemoryDBTestUtil.createMessage(memoryDB);
 
-            MessageService messageService = new MessageServiceFactory(
-                    Type.MEMORY,
+            MessageService messageService = new MessageServiceMemoryDBFactory(
                     memoryDB
             ).create();
 
@@ -117,8 +114,7 @@ class MessageServiceImplTest {
             MemoryDB memoryDB = new MemoryDB();
             Message message = MemoryDBTestUtil.createMessage(memoryDB);
 
-            MessageService messageService = new MessageServiceFactory(
-                    Type.MEMORY,
+            MessageService messageService = new MessageServiceMemoryDBFactory(
                     memoryDB
             ).create();
 
@@ -151,8 +147,7 @@ class MessageServiceImplTest {
             MemoryDB memoryDB = new MemoryDB();
             Message message = MemoryDBTestUtil.createMessage(memoryDB);
 
-            MessageService messageService = new MessageServiceFactory(
-                    Type.MEMORY,
+            MessageService messageService = new MessageServiceMemoryDBFactory(
                     memoryDB
             ).create();
 
@@ -184,8 +179,7 @@ class MessageServiceImplTest {
             Message message1 = MemoryDBTestUtil.createMessage(memoryDB);
             Message message2 = MemoryDBTestUtil.createMessage(memoryDB);
 
-            MessageService messageService = new MessageServiceFactory(
-                    Type.MEMORY,
+            MessageService messageService = new MessageServiceMemoryDBFactory(
                     memoryDB
             ).create();
 
@@ -235,8 +229,7 @@ class MessageServiceImplTest {
             MemoryDB memoryDB = new MemoryDB();
             Message message = MemoryDBTestUtil.createMessage(memoryDB);
 
-            MessageService messageService = new MessageServiceFactory(
-                    Type.MEMORY,
+            MessageService messageService = new MessageServiceMemoryDBFactory(
                     memoryDB
             ).create();
 
@@ -260,8 +253,7 @@ class MessageServiceImplTest {
             MemoryDB memoryDB = new MemoryDB();
             Message message = MemoryDBTestUtil.createMessage(memoryDB);
 
-            MessageService messageService = new MessageServiceFactory(
-                    Type.MEMORY,
+            MessageService messageService = new MessageServiceMemoryDBFactory(
                     memoryDB
             ).create();
 
@@ -286,8 +278,7 @@ class MessageServiceImplTest {
             Message message1 = MemoryDBTestUtil.createMessage(memoryDB);
             Message message2 = MemoryDBTestUtil.createMessage(memoryDB);
 
-            MessageService messageService = new MessageServiceFactory(
-                    Type.MEMORY,
+            MessageService messageService = new MessageServiceMemoryDBFactory(
                     memoryDB
             ).create();
 

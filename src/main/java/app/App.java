@@ -2,12 +2,14 @@ package app;
 
 import app.component.message.MessageHandler;
 import app.component.message.MessageServiceFactory;
+import app.component.message.MessageServiceMemoryDBFactory;
 import app.component.token.TokenHandler;
 import app.component.token.TokenServiceFactory;
+import app.component.token.TokenServiceMemoryDBFactory;
 import app.component.user.UserHandler;
 import app.component.user.UserServiceFactory;
+import app.component.user.UserServiceMemoryDBFactory;
 import app.db.MemoryDB;
-import app.db.Type;
 import app.http.exception.ApiException;
 import app.http.middleware.AuthMiddleware;
 import app.http.middleware.ContentTypeMiddleware;
@@ -40,7 +42,6 @@ class App {
     private JsonParser jsonParser;
 
     App(
-            Type dbType,
             MemoryDB memoryDB,
             Jwt jwt,
             Logger logger,
@@ -54,9 +55,9 @@ class App {
         this.contentTypeValue = contentTypeValue;
         this.corsData = CorsMiddleware.createData(corsOrigins, corsMethods, corsHeaders);
 
-        this.userServiceFactory = new UserServiceFactory(dbType, memoryDB);
-        this.tokenServiceFactory = new TokenServiceFactory(dbType, memoryDB, jwt);
-        this.messageServiceFactory = new MessageServiceFactory(dbType, memoryDB);
+        this.userServiceFactory = new UserServiceMemoryDBFactory(memoryDB);
+        this.tokenServiceFactory = new TokenServiceMemoryDBFactory(memoryDB, jwt);
+        this.messageServiceFactory = new MessageServiceMemoryDBFactory(memoryDB);
 
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         this.jsonTransformer = new JsonTransformer(gson);

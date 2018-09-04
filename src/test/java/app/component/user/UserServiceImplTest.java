@@ -2,7 +2,6 @@ package app.component.user;
 
 import app.db.MemoryDB;
 import app.db.MemoryDBTestUtil;
-import app.db.Type;
 import app.http.exception.ApiException;
 import org.junit.jupiter.api.Test;
 
@@ -18,8 +17,7 @@ class UserServiceImplTest {
             MemoryDB memoryDB = new MemoryDB();
 
             User user = new User(UUID.randomUUID().toString(), "test user");
-            UserService userService = new UserServiceFactory(
-                    Type.MEMORY,
+            UserService userService = new UserServiceMemoryDBFactory(
                     memoryDB
             ).create();
 
@@ -38,8 +36,7 @@ class UserServiceImplTest {
             MemoryDB memoryDB = new MemoryDB();
             User user = MemoryDBTestUtil.createUser(memoryDB);
 
-            UserService userService = new UserServiceFactory(
-                    Type.MEMORY,
+            UserService userService = new UserServiceMemoryDBFactory(
                     memoryDB
             ).create();
 

@@ -1,7 +1,6 @@
 package app;
 
 import app.db.MemoryDB;
-import app.db.Type;
 import app.service.jwt.Jwt;
 import app.service.jwt.JwtHS256;
 import app.service.logger.StandardOutputLogger;
@@ -23,7 +22,6 @@ public class Main {
         String corsMethods = dotenv.get("CORS_METHODS");
         String corsHeaders = dotenv.get("CORS_HEADERS");
         App app = new App(
-                Type.MEMORY,
                 db,
                 jwt,
                 new StandardOutputLogger(),
